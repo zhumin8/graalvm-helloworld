@@ -37,5 +37,35 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>native</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.graalvm.buildtools</groupId>
+						<artifactId>native-maven-plugin</artifactId>
+						<version>0.9.20</version>
+						<extensions>true</extensions>
+						<configuration>
+							<mainClass>com.example.graalvmhelloworld.GraalvmHelloworldApplication</mainClass>
+							<buildArgs>
+								<buildArg>--no-fallback</buildArg>
+								<buildArg>--no-server</buildArg>
+							</buildArgs>
+						</configuration>
+						<executions>
+							<execution>
+								<id>build-native</id>
+								<goals>
+									<goal>build</goal>
+								</goals>
+								<phase>package</phase>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
