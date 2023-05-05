@@ -13,11 +13,11 @@ public class GraalvmHelloworldApplication {
 		SpringApplication.run(GraalvmHelloworldApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner() {
-		return args -> {
-			System.out.println("Hello World!");
-		};
-	}
+	// @Bean
+	// public CommandLineRunner commandLineRunner() {
+	// 	return args -> {
+	// 		System.out.println("Hello World!");
+	// 	};
+	// }
 
 }
