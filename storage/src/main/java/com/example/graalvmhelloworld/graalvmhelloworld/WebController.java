@@ -50,4 +50,9 @@ public class WebController {
     }
     return "file was updated\n";
   }
+
+  @GetMapping("/hello")
+  public String hello() {
+    return "hello!";
+  }
 }
