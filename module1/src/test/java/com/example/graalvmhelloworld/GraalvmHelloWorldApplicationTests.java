@@ -3,14 +3,18 @@ package com.example.graalvmhelloworld;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledInNativeImage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class GraalvmHelloWorldApplicationTests {
-	private RestTemplate restTemplate = new RestTemplate();
-
+	// private RestTemplate restTemplate = new RestTemplate();
+	@Autowired
+	private TestRestTemplate restTemplate;
 	private static final Log LOGGER = LogFactory.getLog(GraalvmHelloWorldApplicationTests.class);
 	@Test
 	void contextLoads() {
@@ -18,6 +22,7 @@ class GraalvmHelloWorldApplicationTests {
 	}
 
 	@Test
+	@DisabledInNativeImage
 	void applicationBuilder() {
 		SpringApplicationBuilder app =
 				new SpringApplicationBuilder(GraalvmHelloWorldApplication.class).properties("server.port=8082");
