@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootTest
-class GraalvmHelloworldApplicationTests {
+class GraalvmHelloWorldApplicationTests {
 	private RestTemplate restTemplate = new RestTemplate();
 
-	private static final Log LOGGER = LogFactory.getLog(GraalvmHelloworldApplicationTests.class);
+	private static final Log LOGGER = LogFactory.getLog(GraalvmHelloWorldApplicationTests.class);
 	@Test
 	void contextLoads() {
 		LOGGER.info("fake test run!!");
@@ -20,7 +20,7 @@ class GraalvmHelloworldApplicationTests {
 	@Test
 	void applicationBuilder() {
 		SpringApplicationBuilder app =
-				new SpringApplicationBuilder(com.example.graalvmhelloworld.GraalvmHelloworldApplication.class).properties("server.port=8082");
+				new SpringApplicationBuilder(GraalvmHelloWorldApplication.class).properties("server.port=8082");
 		app.run();
 		this.restTemplate.getForObject("http://localhost:8082/hello", String.class);
 	}

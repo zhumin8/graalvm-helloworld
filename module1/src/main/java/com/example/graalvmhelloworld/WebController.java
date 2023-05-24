@@ -16,14 +16,17 @@
 
 package com.example.graalvmhelloworld;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class WebController {
-
+  private static final Log LOGGER = LogFactory.getLog(WebController.class);
   @GetMapping("/hello")
   public String hello() {
+    LOGGER.info("got request for greeting.");
     return "hello!";
   }
 }
